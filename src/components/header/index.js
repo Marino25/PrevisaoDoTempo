@@ -1,9 +1,15 @@
-import React from 'react';
+import React, { useState } from 'react';
 import * as S from './styled';
-
+import ModalRoot from '../modal/index';
 
 
 const Header = () => {
+    const [showModal, setShowModal] = React.useState(false);
+
+    const openModal = () => {
+        setShowModal(prev => !prev);
+    };
+
     return (
         <S.WrapperHeader>
             <S.WrapperTittle>
@@ -14,7 +20,8 @@ const Header = () => {
                     type='text'
                     placeholder='Insira aqui o nome da cidade'>
                 </input>
-                <img src="search.png" alt='Imagem de Lupa' />
+                <img src="search.png" alt='Imagem de Lupa' onClick={openModal} />
+                <ModalRoot showModal={showModal} setShowModal={setShowModal} />
             </div>
             <S.Line />
             <S.WrapperContent>
@@ -77,9 +84,6 @@ const Header = () => {
                         <h4>Curitiba</h4>
                     </div>
                 </div>
-
-
-
             </S.WrapperContent>
 
         </S.WrapperHeader>

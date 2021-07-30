@@ -36,7 +36,9 @@ export const WrapperHeader = styled.div`
             weight: 30px;
             position: absolute;
             padding-right: 10px;          // Absolute sempre no imagem//
-           
+            :hover {
+                cursor: pointer;
+              }
             }
         
     }
