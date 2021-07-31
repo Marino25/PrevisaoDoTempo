@@ -6,11 +6,13 @@ justify-content: center;
 align-items: center;
 max-width: 800px;
 
+
    .divContent{
       width: 700px;
       height: 23px;
       justify-content: center;
       align-items: center;
+      
 
       .divTittle {
          justify-content: flex-start;
@@ -19,6 +21,8 @@ max-width: 800px;
          position: absolute;
          h4 {
             color: red;
+            text-shadow: 2px 2px 4px black;
+            font-size: 20px;
          }
         
       }
@@ -34,7 +38,7 @@ max-width: 800px;
             border: none;
             outline: none;
             border-radius: 50%;
-            background-color: white;
+            background-color: Transparent;
          }
       }
 
@@ -43,6 +47,13 @@ max-width: 800px;
          justify-content: center;
          align-items: center;
          margin-top: 50px;
+         h1 {
+            text-shadow: 
+            -1px -1px 0px orange, 
+            -1px 1px 0px orange,                    
+             0px -1px 0px orange,                  
+             0px 0px 0px orange;
+         }
       }
 
       .divPropsTemp {
@@ -50,7 +61,9 @@ max-width: 800px;
          justify-content: center;
          align-items: center;
          margin-top: 40px;
-
+            
+         
+            
             div {
                justify-content: center;
                align-items: center;
@@ -58,10 +71,20 @@ max-width: 800px;
                   display: inline;
                   font-size: 25px;
                   margin-left: 5px;
+                  text-shadow: 
+                  -1px -1px 0px orange, 
+                  -1px 1px 0px orange,                    
+                   0px -1px 0px orange,                  
+                   0px 0px 0px orange;
                }
                h3 {
                   display: inline;
                   font-size: 25px;
+                  text-shadow: 
+                  -1px -1px 0px orange, 
+                  -1px 1px 0px orange,                    
+                   0px -1px 0px orange,                  
+                   0px 0px 0px orange;
                }
                
                h4 {
@@ -85,6 +108,11 @@ max-width: 800px;
       
       h2 {
          margin: 0 12px;
+         text-shadow: 
+            -1px -1px 0px #FFF, 
+            -1px 1px 0px #FFF,                    
+             1px -1px 0px #FFF,                  
+             1px 0px 0px #FFF;
       }
    }
 
@@ -102,6 +130,8 @@ max-width: 800px;
          
          h3 {
            margin: 0 5px;
+           color: darkorange;
+           text-shadow: 2px 2px 3px black;
          }
          h4 {
             margin-right: 32px;
@@ -117,6 +147,8 @@ max-width: 800px;
          h3 {
            margin: 0 2px;
            margin-top: 10px;
+           color: darkorange;
+           text-shadow: 2px 2px 3px black;
          }
          h4 {
             margin-right: 25px;
@@ -132,6 +164,8 @@ max-width: 800px;
          h3 {
            margin: 0 2px;
            margin-top: 10px;
+           color: darkorange;
+           text-shadow: 2px 2px 3px black;
          }
          h4 {
             margin-right: 32px;
@@ -147,6 +181,8 @@ max-width: 800px;
          h3 {
            margin: 0 2px;
            margin-top: 10px;
+           color: darkorange;
+           text-shadow: 2px 2px 3px black;
          }
          h4 {
             margin-right: 28px;
@@ -162,6 +198,8 @@ max-width: 800px;
          h3 {
            margin: 0 2px;
            margin-top: 10px;
+           color: darkorange;
+           text-shadow: 2px 2px 3px black;
          }
          h4 {
             margin-right: 25px;
@@ -177,6 +215,8 @@ max-width: 800px;
          h3 {
            margin: 0 2px;
            margin-top: 10px;
+           color: darkorange;
+           text-shadow: 2px 2px 3px black;
          }
          h4 {
             margin-right: 35px;
@@ -192,6 +232,8 @@ max-width: 800px;
          h3 {
            margin: 0 2px;
            margin-top: 10px;
+           color: darkorange;
+           text-shadow: 2px 2px 3px black;
          }
       
       }
@@ -206,5 +248,6 @@ display: flex;
 background-color: orange;
 
 `;
+
 
 

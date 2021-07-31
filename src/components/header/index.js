@@ -20,7 +20,7 @@ const Header = () => {
                     type='text'
                     placeholder='Insira aqui o nome da cidade'>
                 </input>
-                <img src="search.png" alt='Imagem de Lupa' onClick={openModal} />
+                <img src="./assets/search.png" alt='Imagem de Lupa' onClick={openModal} />
                 <ModalRoot showModal={showModal} setShowModal={setShowModal} />
             </div>
             <S.Line />
