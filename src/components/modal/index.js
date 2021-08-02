@@ -3,7 +3,6 @@ import Modal from 'react-modal';
 import * as S from './styled';
 
 
-
 export const ModalRoot = ({ showModal, setShowModal }) => {
 
 
@@ -23,7 +22,6 @@ export const ModalRoot = ({ showModal, setShowModal }) => {
         <Modal
             isOpen={showModal}
             style={customStyles}
-
         >
             <S.ModalContent>
                 <div className='divContent'>

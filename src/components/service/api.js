@@ -1,7 +1,8 @@
 import axios from 'axios';
 
 const api = axios.create({
-    baseURL: 'https://weather-ydn-yql.media.yahoo.com/forecastrss'
+    baseURL: 'https://apitempo.inmet.gov.br/condicao/capitais/'
+
 });
 
 export default api;

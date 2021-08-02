@@ -14,7 +14,6 @@ export const WrapperHeader = styled.div`
         justify-content: flex-end;
        
         input {
-            
             align-items: center;
             border: 1px solid #ccc;
             border-radius: 2px;
@@ -26,12 +25,10 @@ export const WrapperHeader = styled.div`
             padding-right: 60px;
             outline-color: orange;
             margin: 50px 0;
-            
                                            // Relative sempre no input//
         }
         
         img {
-            
             height: 30px;
             weight: 30px;
             position: absolute;
@@ -40,14 +37,9 @@ export const WrapperHeader = styled.div`
                 cursor: pointer;
               }
             }
-        
     }
    
-        
-    
 `;
-
-
 
 export const Line = styled.hr` 
 width: 700px;
