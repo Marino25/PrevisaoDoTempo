@@ -1,11 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import * as S from './styled';
 import ModalRoot from '../modal/index';
-import api from '../service/api';
+import api from '../service/apiCapitals';
+import apiLat from '../service/apiLatitude';
+
 
 const Header = () => {
     const [showModal, setShowModal] = React.useState(false);
-    const [inputValue, setInputValue] = useState('');
+
+    const [inputValue, setInputValue] = useState();
+
     const [capital, setCapitais] = useState({
         "CAPITAL": " ",
         "TMIN18": " ",
@@ -15,9 +19,43 @@ const Header = () => {
     }
     );
 
-    const openModal = () => {
-        setShowModal(prev => !prev);
-    };
+    const [cordenada, setLatValue] = useState(
+        {
+            "results": [
+                {
+                    "address_components": [
+                        {
+                            "long_name": "",
+                            "short_name": "",
+                            "types": ["", ""]
+                        },
+
+                    ],
+                    "formatted_address": "",
+                    "geometry": {
+                        "bounds": {
+
+                        },
+                        "location": {
+                            "lat": "",
+                            "lng": ""
+                        },
+                    },
+                    "status": ""
+                }
+            ]
+        });
+
+    const [cordenadaFinal, setCordenadaFinal] = useState({});
+
+    /* Get ano/mes/dia para a API */
+    var data = new Date();
+    var dia = String(data.getDate()).padStart(2, '0');
+    var mes = String(data.getMonth() + 1).padStart(2, '0');
+    var ano = data.getFullYear();
+    var dataAtual = ano + '-' + mes + '-' + dia;
+    /* Get ano/mes/dia para a API */
+
     /* Capitais da Esquerda */
     var PORTOALEGR = capital[18]?.TMIN18;
     var BELOHORIZONT = capital[2]?.TMIN18;
@@ -42,6 +80,7 @@ const Header = () => {
     var CUIABAMAX = parseInt(CUIABA);
     var RECIFEMAX = parseInt(RECIFE);
     var FORTALEZAMAX = parseInt(FORTALEZA);
+    /* Capitais da Esquerda */
 
     /* Capitais da Direita */
     var RIODEJANEIR = capital[22]?.TMIN18;
@@ -67,17 +106,49 @@ const Header = () => {
     var BRASILIAMAX = parseInt(BRASILIA);
     var GOIANIAMAX = parseInt(GOIANIA);
     var FLORIANOPOLISMAX = parseInt(FLORIANOPOLIS);
+    /* Capitais da Direita */
+
+    const openModal = () => {
+        setShowModal(prev => !prev);
+
+    };
 
     function handleKeyPress(e) {
         if (e.key === 'Enter') {
-            console.log();
+            if (cordenada.status === 'OK') {
+                openModal();
+                const cordFinal = cordenada.results[0].geometry.location;
+                setCordenadaFinal(cordFinal);
+            } else {
+                alert("Cidade não encontrada ou nome incorreto, tente novamente");
+            }
+        }
+    }
 
+    function imgClick() {
+        if (cordenada.status === 'OK') {
+            openModal();
+            const cordFinal = cordenada.results[0].geometry.location;
+            setCordenadaFinal(cordFinal);
+        } else {
+            alert("Cidade não encontrada ou nome incorreto, tente novamente");
         }
     }
 
     useEffect(() => {
+        apiLat
+            .get(inputValue + key)
+            .then((response) => setLatValue(response.data))
+            .catch((err) => {
+                console.error("ops! ocorreu um erro" + err);
+            });
+    }, [inputValue]);
+
+    let key = "&key=AIzaSyC_1MoYdDDYLUAPYkhMmDB5hVCBRmLIak8";
+
+    useEffect(() => {
         api
-            .get('2021-08-02')
+            .get(dataAtual)
             .then((response) => setCapitais(response.data))
             .catch((err) => {
                 console.error("ops! ocorreu um erro" + err);
@@ -91,19 +162,16 @@ const Header = () => {
             </S.WrapperTittle>
             <div>
                 <input
-                    type='text'
                     value={inputValue}
-
+                    onKeyPress={handleKeyPress}
                     placeholder='Insira aqui o nome da cidade'
                     onChange={(e) => setInputValue(e.target.value)}
-                >
-                </input>
-                <img src="./assets/search.png" alt='Imagem de Lupa' onClick={openModal} />
-                <ModalRoot showModal={showModal} setShowModal={setShowModal} />
+                />
+                <img src="./assets/search.png" alt='Imagem de Lupa' onClick={imgClick} />
+                <ModalRoot valueCordenates={cordenadaFinal} showModal={showModal} setShowModal={setShowModal} />
             </div>
             <S.Line />
             <S.WrapperContent>
-
                 <div className='divEsq'>
                     <div className='SubTittleCity'>
                         <h1>Capitais</h1>
@@ -112,19 +180,20 @@ const Header = () => {
                         <h2>Min</h2>
                         <h2>Máx</h2>
                     </div>
+
                     <div class='TempNumbMinEsq'>
-                        <h2>{PORTOALEGREMIN}°</h2>
-                        <h2>{BELOHORIZONTEMIN}°</h2>
-                        <h2>{CUIABAMIN}°</h2>
-                        <h2>{RECIFEMIN}°</h2>
-                        <h2>{FORTALEZAMIN}°</h2>
+                        <h2>{PORTOALEGREMIN}°C</h2>
+                        <h2>{BELOHORIZONTEMIN}°C</h2>
+                        <h2>{CUIABAMIN}°C</h2>
+                        <h2>{RECIFEMIN}°C</h2>
+                        <h2>{FORTALEZAMIN}°C</h2>
                     </div>
                     <div class='TempNumbMaxEsq'>
-                        <h2>{PORTOALEGREMAX}°</h2>
-                        <h2>{BELOHORIZONTEMAX}°</h2>
-                        <h2>{CUIABAMAX}°</h2>
-                        <h2>{RECIFEMAX}°;/</h2>
-                        <h2>{FORTALEZAMAX}°</h2>
+                        <h2>{PORTOALEGREMAX}°C</h2>
+                        <h2>{BELOHORIZONTEMAX}°C</h2>
+                        <h2>{CUIABAMAX}°C</h2>
+                        <h2>{RECIFEMAX}°C</h2>
+                        <h2>{FORTALEZAMAX}°C</h2>
                     </div>
                     <div class='CityNameEsq'>
                         <h4>{capital[18]?.CAPITAL}</h4>
@@ -134,25 +203,24 @@ const Header = () => {
                         <h4>{capital[9]?.CAPITAL}</h4>
                     </div>
                 </div>
-
                 <div className='divDir'>
                     <div class='GrausDir '>
                         <h2>Min</h2>
                         <h2>Máx</h2>
                     </div>
                     <div class='TempNumbMinDir'>
-                        <h2>{RIODEJANEIROMIN}°</h2>
-                        <h2>{SAOPAULOMIN}°</h2>
-                        <h2>{BRASILIAMIN}°</h2>
-                        <h2>{GOIANIAMIN}°</h2>
-                        <h2>{FLORIANOPOLISMIN}°</h2>
+                        <h2>{RIODEJANEIROMIN}°C</h2>
+                        <h2>{SAOPAULOMIN}°C</h2>
+                        <h2>{BRASILIAMIN}°C</h2>
+                        <h2>{GOIANIAMIN}°C</h2>
+                        <h2>{FLORIANOPOLISMIN}°C</h2>
                     </div>
                     <div class='TempNumbMaxDir'>
-                        <h2>{RIODEJANEIROMAX}°</h2>
-                        <h2>{SAOPAULOMAX}°</h2>
-                        <h2>{BRASILIAMAX}°</h2>
-                        <h2>{GOIANIAMAX}°</h2>
-                        <h2>{FLORIANOPOLISMAX}°</h2>
+                        <h2>{RIODEJANEIROMAX}°C</h2>
+                        <h2>{SAOPAULOMAX}°C</h2>
+                        <h2>{BRASILIAMAX}°C</h2>
+                        <h2>{GOIANIAMAX}°C</h2>
+                        <h2>{FLORIANOPOLISMAX}°C</h2>
                     </div>
                     <div class='CityNameDir'>
                         <h4>{capital[22]?.CAPITAL}</h4>
@@ -163,9 +231,7 @@ const Header = () => {
                     </div>
                 </div>
             </S.WrapperContent>
-
         </S.WrapperHeader>
-
     )
 };
 

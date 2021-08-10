@@ -1,8 +1,8 @@
 import axios from 'axios';
 
-const api = axios.create({
+const apiCapitals = axios.create({
     baseURL: 'https://apitempo.inmet.gov.br/condicao/capitais/'
 
 });
 
-export default api;
+export default apiCapitals;

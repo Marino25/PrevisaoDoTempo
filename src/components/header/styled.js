@@ -92,7 +92,8 @@ margin-top: 30px;
         h2 {
             color: Black;
             font-size: 20px;
-            margin-left: 5px;
+            margin-left: 10px;
+            text-align: center ;
             text-shadow: 
             -1px -1px 0px #FFF, 
             -1px 1px 0px #FFF,                    
@@ -104,30 +105,32 @@ margin-top: 30px;
 
     .TempNumbMinEsq {
         display: inline;
-        margin-left: px;
+        margin-left: -8px;
         max-height: 60%;
         position: relative;
     
         h2 {
             color: black;
-            font-size: 18px;
+            font-size: 16px;
             font-family: 'Open Sans', sans-serif;
             margin-left: 10px;
+            text-align: center;
+            
         }
     }
     .TempNumbMaxEsq {
         display: inline;
         max-height: 60%;
         position: absolute;
-        margin-left: 50px;
+        margin-left: 48px;
         margin-top: 103px;
         
     
         h2 {
             color: black;
-            font-size: 18px;
+            font-size: 16px;
             font-family: 'Open Sans', sans-serif;
-            text-shadow: 
+            text-align: center ;
             
         }
     }    
@@ -137,15 +140,15 @@ margin-top: 30px;
         position: absolute;
         max-height: 60%;
         width: 200px;
-        margin-top: 101px;
+        margin-top: 103px;
         margin-left: 100px;
 
         h4 {
             color: black;
-            font-size: 18px;
+            font-size: 16px;
             font-weight: normal;
             font-family: 'Open Sans', sans-serif;
-            text-shadow: 1px 1px 1px black,
+            text-shadow: 5px 5px 10px black,
             1px 1px 1px white;
         }
     }
@@ -167,7 +170,7 @@ margin-top: 30px;
         h2 {
             color: Black;
             font-size: 20px;
-            margin-left: 5px;
+            margin-left: 10px;
             text-shadow: 
             -1px -1px 0px #FFF, 
             -1px 1px 0px #FFF,                    
@@ -185,7 +188,8 @@ margin-top: 30px;
     
         h2 {
             color: black;
-            font-size: 18px;
+            font-size: 16px;
+            text-align: center ;
             font-family: 'Open Sans', sans-serif;        }
     }
 
@@ -193,12 +197,13 @@ margin-top: 30px;
         display: inline;
         max-height: 60%;
         position: absolute;
-        margin-left: 50px;
+        margin-left: 55px;
         margin-top: 98px;
         margin-border: red;
         h2 {
             color: black;
-            font-size: 18px;
+            font-size: 16px;
+            text-align: center ;
             font-family: 'Open Sans', sans-serif;
         }
     }    
@@ -208,15 +213,15 @@ margin-top: 30px;
         position: absolute;
         max-height: 60%;
         width: 200px;
-        margin-top: 97px;
+        margin-top: 98px;
         margin-left: 100px;
 
         h4 {
             color: black;
-            font-size: 18px;
+            font-size: 16px;
             font-weight: normal;
             font-family: 'Open Sans', sans-serif;
-            text-shadow: 1px 1px 1px black,
+            text-shadow: 5px 5px 10px black,
             1px 1px 1px white;
         }
     }
