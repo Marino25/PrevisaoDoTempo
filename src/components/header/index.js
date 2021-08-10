@@ -134,7 +134,7 @@ const Header = () => {
             alert("Cidade não encontrada ou nome incorreto, tente novamente");
         }
     }
-
+    let REACT_APP_GOOGLE_API_KEY = '';
     useEffect(() => {
         apiLat
             .get(inputValue + REACT_APP_GOOGLE_API_KEY)

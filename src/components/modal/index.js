@@ -13,7 +13,7 @@ export const ModalRoot = ({ showModal, setShowModal, valueCordenates }) => {
     const [loading, setLoading] = useState(false);
 
 
-
+    let key_Latitude = '';
     useEffect(() => {
         setLoading(true);
         const timer = setTimeout(() => {
