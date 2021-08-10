@@ -137,14 +137,14 @@ const Header = () => {
 
     useEffect(() => {
         apiLat
-            .get(inputValue + key)
+            .get(inputValue + REACT_APP_GOOGLE_API_KEY)
             .then((response) => setLatValue(response.data))
             .catch((err) => {
                 console.error("ops! ocorreu um erro" + err);
             });
     }, [inputValue]);
 
-    let key = "&key=AIzaSyC_1MoYdDDYLUAPYkhMmDB5hVCBRmLIak8";
+
 
     useEffect(() => {
         api

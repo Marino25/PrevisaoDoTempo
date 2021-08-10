@@ -12,13 +12,13 @@ export const ModalRoot = ({ showModal, setShowModal, valueCordenates }) => {
     const latitude = `${lat},${lng}`;
     const [loading, setLoading] = useState(false);
 
-    var key = '?lan=pt&apid=zwTXaX4aq4XBevQ&ll=';
+
 
     useEffect(() => {
         setLoading(true);
         const timer = setTimeout(() => {
             apiCity
-                .get(key + latitude)
+                .get(key_Latitude + latitude)
                 .then((response) => setCityValue(response.data))
                 .catch((err) => {
                     console.error("ops! ocorreu um erro" + err);
